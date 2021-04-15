@@ -10,6 +10,7 @@ object frmPrincipal: TfrmPrincipal
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  Menu = mmPrincipal
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
@@ -21,5 +22,30 @@ object frmPrincipal: TfrmPrincipal
   object FDPhysFBDriverLink1: TFDPhysFBDriverLink
     Left = 584
     Top = 16
+  end
+  object mmPrincipal: TMainMenu
+    Left = 96
+    Top = 48
+    object miCadastros: TMenuItem
+      Caption = '&Cadastros'
+      object miCliente: TMenuItem
+        Caption = 'Cliente'
+      end
+      object miProduto: TMenuItem
+        Caption = 'Produto'
+      end
+    end
+    object miVendas: TMenuItem
+      Caption = '&Vendas'
+      object miPedido: TMenuItem
+        Caption = 'Pedido'
+      end
+    end
+    object miReceita: TMenuItem
+      Caption = '&Receitas'
+      object miPendente: TMenuItem
+        Caption = 'Pendente'
+      end
+    end
   end
 end
