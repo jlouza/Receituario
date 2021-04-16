@@ -10,7 +10,8 @@ uses
   cCliente in 'cCliente.pas',
   CadCliente in 'CadCliente.pas' {frmCadClientes},
   cProduto in 'cProduto.pas',
-  CadProduto in 'CadProduto.pas' {frmCadProdutos};
+  CadProduto in 'CadProduto.pas' {frmCadProdutos},
+  cItensPedido in 'cItensPedido.pas';
 
 {$R *.res}
 
