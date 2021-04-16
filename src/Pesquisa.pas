@@ -13,9 +13,9 @@ type
   TfrmPesquisa = class(TForm)
     DBGrid1: TDBGrid;
     dsPesquisa: TDataSource;
-    qryPesquisa: TFDQuery;
+    qryPesPadrao: TFDQuery;
     procedure DBGrid1DblClick(Sender: TObject);
-    procedure qryPesquisaBeforeDelete(DataSet: TDataSet);
+    procedure qryPesPadraoBeforeDelete(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -34,7 +34,7 @@ begin
   ModalResult := mrOk;
 end;
 
-procedure TfrmPesquisa.qryPesquisaBeforeDelete(DataSet: TDataSet);
+procedure TfrmPesquisa.qryPesPadraoBeforeDelete(DataSet: TDataSet);
 begin
   Abort;
 end;

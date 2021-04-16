@@ -24,6 +24,7 @@ type
     function Excluir(pTabela: String; pFiltros: array of String; pVlrFiltros: array of Variant):Boolean;
     function Campos: TFDQuery;
     function Pesquisar(pTabela: String; pChave: String; pCampos: array of string; pTitulo: String): String;
+    function NextVal(pTabela: String; pChave: String): Integer;
     procedure Consultar(pInstrucao: string; pCampos: array of String; pValor: array of Variant);
   end;
 
@@ -238,6 +239,23 @@ begin
   end;
 end;
 
+function TDados.NextVal(pTabela, pChave: String): Integer;
+begin
+  Result := 0;
+  try
+    with qryPesquisa do
+    begin
+      Active := False;
+      SQL.Clear;
+      SQL.Add('SELECT COALESCE(MAX('+pChave+') + 1,1) AS VALOR FROM '+pTabela);
+      Active := True;
+      Result := qryPesquisa.FieldByName('VALOR').AsInteger;
+    end;
+  except
+    Application.MessageBox('Erro ao consultar a tabela!','Atenção',MB_OK);
+  end;
+end;
+
 function TDados.Pesquisar(pTabela, pChave: String; pCampos: array of string; pTitulo: String): String;
 var
   I: Integer;
@@ -259,13 +277,13 @@ begin
     Application.CreateForm(TfrmPesquisa,frmPesquisa);
     with frmPesquisa do begin
       Caption := pTitulo;
-      qryPesquisa.Connection := conexao;
-      qryPesquisa.Active     := False;
-      qryPesquisa.SQL.Clear;
-      qryPesquisa.SQL.Add('SELECT '+vListaCampos+' FROM '+pTabela);
-      qryPesquisa.Active := True;
+      qryPesPadrao.Connection := conexao;
+      qryPesPadrao.Active     := False;
+      qryPesPadrao.SQL.Clear;
+      qryPesPadrao.SQL.Add('SELECT '+vListaCampos+' FROM '+pTabela);
+      qryPesPadrao.Active := True;
       if (ShowModal = mrOK) then begin
-        Result := qryPesquisa.FieldByName(pChave).AsString;
+        Result := qryPesPadrao.FieldByName(pChave).AsString;
       end;
     end;
   finally

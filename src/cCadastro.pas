@@ -2,6 +2,9 @@ unit cCadastro;
 
 interface
 
+uses
+  Biblioteca, Data.DB, System.SysUtils;
+
 type
   TCadastro = class abstract
   private
@@ -10,6 +13,7 @@ type
   RAZAO_SOCIAL  : String;
   TIPO_PESSOA   : String;
   TIPO_CADASTRO : String;
+  function ValidaCPF(pValor: String): Boolean;
   public
     { Public declarations }
     function  GetCADASTRO_ID: String;
@@ -52,7 +56,13 @@ end;
 
 procedure TCadastro.SetCADASTRO_ID(pValor: String);
 begin
-  CADASTRO_ID := pValor;
+  if ValidaCPF(pValor) then
+  begin
+    CADASTRO_ID := pValor;
+  end else begin
+    Atencao('CPF inválido');
+    Abort;
+  end;
 end;
 
 procedure TCadastro.SetRAZAO_SOCIAL(pValor: String);
@@ -68,6 +78,53 @@ end;
 procedure TCadastro.SetTIPO_PESSOA(pValor: String);
 begin
   TIPO_PESSOA := pValor;
+end;
+
+function TCadastro.ValidaCPF(pValor: String): Boolean;
+var
+  Digito1,Digito2,vNumeros: String;
+  S,Cont,Soma,I: Integer;
+begin
+  vNumeros := '';
+  for I := 1 to Length(pValor) do
+  begin
+    if CharInSet(pValor[i],['0'..'9']) then
+    begin
+      vNumeros := (vNumeros + pValor[I]);
+    end;
+  end;
+  if (Length(vNumeros) = 11) then
+  begin
+    {Primeiro Dígito }
+    Cont:=1;
+    Soma:=0;
+    for S:=9 Downto 1 do
+    begin
+      Inc(Cont);
+      Soma := Soma + (StrToInt(vNumeros[S]) * Cont);
+    end;
+    Soma := (Soma * 10);
+    Digito1 := IntToStr(Soma Mod 11);
+    if (StrToInt(Digito1) >= 10) then
+      Digito1 := '0';
+    {Segundo Dígito}
+    Cont:=1;
+    Soma:=0;
+    for S:=10 Downto 1 do
+    begin
+      Inc(Cont);
+      Soma := Soma + (StrToInt(vNumeros[S]) * Cont);
+    end;
+    Soma    := (Soma * 10);
+    Digito2 := IntToStr(Soma Mod 11);
+    if (StrToInt(Digito2) >= 10) then
+      Digito2 := '0';
+  end else
+  begin
+    Result := False;
+    Exit;
+  end;
+  Result := (Copy(vNumeros,Length(vNumeros)-1,2) = (Digito1+Digito2));
 end;
 
 end.

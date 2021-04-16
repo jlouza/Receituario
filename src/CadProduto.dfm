@@ -1,10 +1,9 @@
-object frmCadClientes: TfrmCadClientes
+object frmCadProdutos: TfrmCadProdutos
   Left = 0
   Top = 0
-  BorderIcons = [biSystemMenu]
-  Caption = 'Cadastro de cliente'
-  ClientHeight = 83
-  ClientWidth = 597
+  Caption = 'Cadastro de produto'
+  ClientHeight = 141
+  ClientWidth = 591
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,56 +18,43 @@ object frmCadClientes: TfrmCadClientes
   OnKeyDown = FormKeyDown
   PixelsPerInch = 96
   TextHeight = 13
-  object lblCpf: TLabel
-    Left = 8
-    Top = 34
-    Width = 19
+  object lblCodigo: TLabel
+    Left = 24
+    Top = 39
+    Width = 33
     Height = 13
-    Caption = 'CPF'
+    Caption = 'C'#243'digo'
   end
   object lblNome: TLabel
-    Left = 139
-    Top = 34
+    Left = 122
+    Top = 39
     Width = 27
     Height = 13
     Caption = 'Nome'
   end
-  object edtNome: TEdit
-    Left = 139
-    Top = 50
-    Width = 435
-    Height = 21
-    MaxLength = 50
-    TabOrder = 1
-  end
-  object edtCadastroID: TMaskEdit
-    Left = 8
-    Top = 50
-    Width = 127
-    Height = 21
-    AutoSize = False
-    EditMask = '!999.999.999/99;1;_'
-    MaxLength = 14
-    TabOrder = 0
-    Text = '   .   .   /  '
-    OnKeyDown = edtCadastroIDKeyDown
+  object lblValor: TLabel
+    Left = 24
+    Top = 88
+    Width = 24
+    Height = 13
+    Caption = 'Valor'
   end
   object CoolBar1: TCoolBar
     Left = 0
     Top = 0
-    Width = 597
+    Width = 591
     Height = 29
     Bands = <
       item
         Control = ToolBar1
         ImageIndex = -1
         MinHeight = 24
-        Width = 591
+        Width = 585
       end>
     object ToolBar1: TToolBar
       Left = 11
       Top = 0
-      Width = 582
+      Width = 576
       Height = 24
       Align = alClient
       AutoSize = True
@@ -136,5 +122,40 @@ object frmCadClientes: TfrmCadClientes
         OnClick = tbFecharClick
       end
     end
+  end
+  object edtCodigo: TEdit
+    Left = 24
+    Top = 56
+    Width = 81
+    Height = 21
+    NumbersOnly = True
+    TabOrder = 1
+    OnKeyDown = edtCodigoKeyDown
+  end
+  object edtNome: TEdit
+    Left = 122
+    Top = 56
+    Width = 411
+    Height = 21
+    TabOrder = 2
+  end
+  object edtValor: TEdit
+    Left = 24
+    Top = 105
+    Width = 99
+    Height = 21
+    Alignment = taRightJustify
+    MaxLength = 10
+    TabOrder = 3
+    Text = '0,00'
+    OnKeyPress = edtValorKeyPress
+  end
+  object chkControleEspecial: TCheckBox
+    Left = 172
+    Top = 107
+    Width = 131
+    Height = 17
+    Caption = 'Exige controle especial'
+    TabOrder = 4
   end
 end

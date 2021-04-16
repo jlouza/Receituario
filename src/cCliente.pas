@@ -10,6 +10,7 @@ type
   private
     { Private declarations }
   NOVO: Boolean;
+
   public
     { Public declarations }
     function  GetNOVO: Boolean;
@@ -63,7 +64,8 @@ function TCliente.Gravar: Boolean;
 begin
   Result := False;
   try
-    if GetNOVO then begin
+    if GetNOVO then
+    begin
       Result := Banco.Inserir('CADASTROS',
                              ['CADASTRO_ID',
                               'RAZAO_SOCIAL',
@@ -73,7 +75,8 @@ begin
                               GetRAZAO_SOCIAL,
                               GetTIPO_PESSOA,
                               GetTIPO_CADASTRO]);
-    end else begin
+    end else
+    begin
       Result := Banco.Atualizar('CADASTROS',
                                ['CADASTRO_ID'],
                                [GetCADASTRO_ID],
@@ -94,7 +97,7 @@ begin
                               'CADASTRO_ID',
                               ['CADASTRO_ID',
                                'RAZAO_SOCIAL'],
-                              'Pesquisa clientes');
+                              'Pesquisa de clientes');
   if (vRetorno <> '') then begin
     Result := Consultar(vRetorno);
   end;

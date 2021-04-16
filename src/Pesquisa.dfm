@@ -31,12 +31,12 @@ object frmPesquisa: TfrmPesquisa
     OnDblClick = DBGrid1DblClick
   end
   object dsPesquisa: TDataSource
-    DataSet = qryPesquisa
+    DataSet = qryPesPadrao
     Left = 360
     Top = 96
   end
-  object qryPesquisa: TFDQuery
-    BeforeDelete = qryPesquisaBeforeDelete
+  object qryPesPadrao: TFDQuery
+    BeforeDelete = qryPesPadraoBeforeDelete
     Left = 432
     Top = 96
   end

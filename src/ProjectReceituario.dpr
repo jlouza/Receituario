@@ -8,7 +8,9 @@ uses
   Pesquisa in 'Pesquisa.pas' {frmPesquisa},
   cCadastro in 'cCadastro.pas',
   cCliente in 'cCliente.pas',
-  CadCliente in 'CadCliente.pas' {frmCadClientes};
+  CadCliente in 'CadCliente.pas' {frmCadClientes},
+  cProduto in 'cProduto.pas',
+  CadProduto in 'CadProduto.pas' {frmCadProdutos};
 
 {$R *.res}
 
@@ -19,5 +21,6 @@ begin
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TfrmPesquisa, frmPesquisa);
   Application.CreateForm(TfrmCadClientes, frmCadClientes);
+  Application.CreateForm(TfrmCadProdutos, frmCadProdutos);
   Application.Run;
 end.
