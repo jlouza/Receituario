@@ -22,8 +22,8 @@ type
     procedure SetTIPO_CADASTRO(pValor: String);
   protected
     function Gravar:Boolean; virtual; abstract;
-    function Consultar(pCodigo: Integer): Boolean; virtual; abstract;
-    function Excluir(pCodigo: Integer): Boolean; virtual; abstract;
+    function Consultar(pCadastroID: String): Boolean; virtual; abstract;
+    function Excluir(pCadastroID: String): Boolean; virtual; abstract;
   end;
 
 implementation

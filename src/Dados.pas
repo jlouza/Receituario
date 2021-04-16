@@ -23,7 +23,7 @@ type
     function Atualizar(pTabela: String; pFiltros: array of String; pVlrFiltros: array of Variant; pCampos: array of String; pValor: array of Variant): Boolean;
     function Excluir(pTabela: String; pFiltros: array of String; pVlrFiltros: array of Variant):Boolean;
     function Campos: TFDQuery;
-    function Pesquisar(pTabela: String; pChave: String; pCampos: array of string): String;
+    function Pesquisar(pTabela: String; pChave: String; pCampos: array of string; pTitulo: String): String;
     procedure Consultar(pInstrucao: string; pCampos: array of String; pValor: array of Variant);
   end;
 
@@ -238,7 +238,7 @@ begin
   end;
 end;
 
-function TDados.Pesquisar(pTabela, pChave: String; pCampos: array of string): String;
+function TDados.Pesquisar(pTabela, pChave: String; pCampos: array of string; pTitulo: String): String;
 var
   I: Integer;
   vListaCampos: String;
@@ -258,6 +258,7 @@ begin
   try
     Application.CreateForm(TfrmPesquisa,frmPesquisa);
     with frmPesquisa do begin
+      Caption := pTitulo;
       qryPesquisa.Connection := conexao;
       qryPesquisa.Active     := False;
       qryPesquisa.SQL.Clear;

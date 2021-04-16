@@ -30,6 +30,7 @@ object frmPrincipal: TfrmPrincipal
       Caption = '&Cadastros'
       object miCliente: TMenuItem
         Caption = 'Cliente'
+        OnClick = miClienteClick
       end
       object miProduto: TMenuItem
         Caption = 'Produto'
