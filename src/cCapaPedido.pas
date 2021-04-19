@@ -37,6 +37,8 @@ type
     procedure SetNOVO(pValor: Boolean);
     function  GetITENS: TObjectList<TItensPedido>;
     procedure SetITENS(pValor: TItensPedido);
+
+    procedure AlterarStatus(pPedidoID: Integer; pStatus: String);
     function Gravar:Boolean;
     function Consultar(pPedidoID: Integer): Boolean;
     function Excluir(pPedidoID: Integer): Boolean;
@@ -46,6 +48,11 @@ type
 implementation
 
 { TCapaPedido }
+
+procedure TCapaPedido.AlterarStatus(pPedidoID: Integer; pStatus: String);
+begin
+  Banco.Atualizar('CAPA_PEDIDO',['PEDIDO_ID'],[pPedidoID],['STATUS'],[pStatus]);
+end;
 
 function TCapaPedido.Consultar(pPedidoID: Integer): Boolean;
 var
@@ -100,9 +107,9 @@ function TCapaPedido.Excluir(pPedidoID: Integer): Boolean;
 begin
   Result := False;
   try
-    Result := Banco.Excluir('CAPA_PEDIDO',['PEDIDO_ID'],[pPedidoID]);
+    Result := Banco.Excluir('ITENS_PEDIDO',['PEDIDO_ID'],[pPedidoID]);
     if Result then begin
-      Banco.Excluir('ITENS_PEDIDO',['PEDIDO_ID'],[pPedidoID]);
+      Banco.Excluir('CAPA_PEDIDO',['PEDIDO_ID'],[pPedidoID]);
     end;
   except
     Atencao('Erro ao excluir a venda!');

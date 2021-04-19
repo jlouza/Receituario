@@ -14,7 +14,10 @@ uses
   cItensPedido in 'cItensPedido.pas',
   cProdutoCad in 'cProdutoCad.pas',
   cCapaPedido in 'cCapaPedido.pas',
-  PedidoVenda in 'PedidoVenda.pas' {frmPedidoVenda};
+  PedidoVenda in 'PedidoVenda.pas' {frmPedidoVenda},
+  cReceita in 'cReceita.pas',
+  Receita in 'Receita.pas' {frmReceita},
+  cTecnico in 'cTecnico.pas';
 
 {$R *.res}
 
@@ -27,5 +30,6 @@ begin
   Application.CreateForm(TfrmCadClientes, frmCadClientes);
   Application.CreateForm(TfrmCadProdutos, frmCadProdutos);
   Application.CreateForm(TfrmPedidoVenda, frmPedidoVenda);
+  Application.CreateForm(TfrmReceita, frmReceita);
   Application.Run;
 end.

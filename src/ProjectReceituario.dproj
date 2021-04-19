@@ -126,6 +126,12 @@
             <Form>frmPedidoVenda</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="cReceita.pas"/>
+        <DCCReference Include="Receita.pas">
+            <Form>frmReceita</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="cTecnico.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

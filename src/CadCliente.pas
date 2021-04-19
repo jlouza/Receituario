@@ -30,8 +30,7 @@ type
     procedure tbExcluirClick(Sender: TObject);
     procedure tbCancelarClick(Sender: TObject);
     procedure tbFecharClick(Sender: TObject);
-    procedure edtCadastroIDKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
+    procedure edtCadastroIDKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     { Private declarations }
     vCliente: TCliente;

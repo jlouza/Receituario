@@ -41,6 +41,7 @@ object frmPrincipal: TfrmPrincipal
       Caption = '&Vendas'
       object miPedido: TMenuItem
         Caption = 'Pedido'
+        OnClick = miPedidoClick
       end
     end
     object miReceita: TMenuItem

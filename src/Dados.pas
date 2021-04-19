@@ -26,11 +26,19 @@ type
     function Pesquisar(pTabela: String; pChave: String; pCampos: array of string; pTitulo: String): String;
     function NextVal(pTabela: String; pChave: String): Integer;
     procedure Consultar(pInstrucao: string; pCampos: array of String; pValor: array of Variant);
+    procedure AbrirTransacao;
+    procedure FecharTransacao;
+    procedure VoltarTransacao;
   end;
 
 implementation
 
 { TDadosFire }
+
+procedure TDados.AbrirTransacao;
+begin
+  conexao.StartTransaction;
+end;
 
 function TDados.Atualizar(pTabela: String; pFiltros: array of String; pVlrFiltros: array of Variant; pCampos: array of String; pValor: array of Variant): Boolean;
 var
@@ -170,6 +178,11 @@ begin
   end;
 end;
 
+procedure TDados.FecharTransacao;
+begin
+  conexao.Commit;
+end;
+
 procedure TDados.IniciarBanco;
 begin
   try
@@ -289,6 +302,11 @@ begin
   finally
     frmPesquisa.Free;
   end;
+end;
+
+procedure TDados.VoltarTransacao;
+begin
+  conexao.Rollback;
 end;
 
 end.
