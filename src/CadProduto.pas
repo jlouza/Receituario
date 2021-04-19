@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.ToolWin, Vcl.StdCtrls, Biblioteca, cProduto;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.ToolWin, Vcl.StdCtrls, Biblioteca, cProdutoCad;
 
 type
   TfrmCadProdutos = class(TForm)
@@ -36,7 +36,7 @@ type
     procedure edtValorKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
-    vProduto: TProduto;
+    vProduto: TProdutoCad;
     vNovo: Boolean;
     procedure LimparCampos;
   public
@@ -93,7 +93,7 @@ end;
 
 procedure TfrmCadProdutos.FormCreate(Sender: TObject);
 begin
-  vProduto := TProduto.Create;
+  vProduto := TProdutoCad.Create;
   vNovo    := True;
 end;
 

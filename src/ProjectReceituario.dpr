@@ -11,7 +11,10 @@ uses
   CadCliente in 'CadCliente.pas' {frmCadClientes},
   cProduto in 'cProduto.pas',
   CadProduto in 'CadProduto.pas' {frmCadProdutos},
-  cItensPedido in 'cItensPedido.pas';
+  cItensPedido in 'cItensPedido.pas',
+  cProdutoCad in 'cProdutoCad.pas',
+  cCapaPedido in 'cCapaPedido.pas',
+  PedidoVenda in 'PedidoVenda.pas' {frmPedidoVenda};
 
 {$R *.res}
 
@@ -23,5 +26,6 @@ begin
   Application.CreateForm(TfrmPesquisa, frmPesquisa);
   Application.CreateForm(TfrmCadClientes, frmCadClientes);
   Application.CreateForm(TfrmCadProdutos, frmCadProdutos);
+  Application.CreateForm(TfrmPedidoVenda, frmPedidoVenda);
   Application.Run;
 end.
