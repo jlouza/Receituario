@@ -75,6 +75,7 @@ object frmReceituario: TfrmReceituario
         Left = 321
         Top = 0
         Caption = '&Assinar'
+        Enabled = False
         ImageIndex = 5
         OnClick = tbAssinarClick
       end
@@ -114,7 +115,6 @@ object frmReceituario: TfrmReceituario
     ParentColor = False
     ParentFont = False
     TabOrder = 1
-    ExplicitTop = 29
   end
   object dbgReceitas: TDBGrid
     Left = 0
@@ -180,7 +180,6 @@ object frmReceituario: TfrmReceituario
     ParentColor = False
     ParentFont = False
     TabOrder = 3
-    ExplicitTop = 169
   end
   object dbgItens: TDBGrid
     Left = 0

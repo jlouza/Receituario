@@ -96,6 +96,7 @@ begin
   cdsReceitas.EmptyDataSet;
   cdsItens.EmptyDataSet;
   FreeAndNil(vListaReceitas);
+  tbAssinar.Enabled := False;
 end;
 
 procedure TfrmReceituario.tbFecharClick(Sender: TObject);
@@ -136,6 +137,7 @@ begin
       cdsReceitas.Post;
     end;
     cdsReceitas.First;
+    tbAssinar.Enabled := not cdsReceitas.IsEmpty;
   end else
   begin
     Atencao('Nenhuma receita pendente!');

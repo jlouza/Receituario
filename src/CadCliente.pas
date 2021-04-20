@@ -35,7 +35,7 @@ type
     { Private declarations }
     vCliente: TCliente;
     vNovo: Boolean;
-    procedure LimparCampos;
+    procedure Modo(pEditando: Boolean);
   public
     { Public declarations }
   end;
@@ -54,6 +54,7 @@ begin
     if vCliente.Consultar(edtCadastroID.Text) then begin
       edtNome.Text := vCliente.GetRAZAO_SOCIAL;
       vNovo        := False;
+      Modo(True);
     end;
   end;
 end;
@@ -71,6 +72,7 @@ begin
   ToolBar1.Images := ilNavegadoresGlobal;
   vCliente := TCliente.Create;
   vNovo    := True;
+  Modo(False);
 end;
 
 procedure TfrmCadClientes.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -81,17 +83,27 @@ begin
   end;
 end;
 
-procedure TfrmCadClientes.LimparCampos;
+procedure TfrmCadClientes.Modo(pEditando: Boolean);
 begin
-  edtCadastroID.Clear;
-  edtNome.Clear;
-  edtCadastroID.SetFocus;
-  vNovo := False;
+  tbExcluir.Enabled   := pEditando and not vNovo;
+  tbCancelar.Enabled  := pEditando;
+  tbGravar.Enabled    := pEditando;
+  tbPesquisar.Enabled := not pEditando;
+  if not pEditando then
+  begin
+    edtCadastroID.Clear;
+    edtNome.Clear;
+    vNovo := False;
+  end;
 end;
 
 procedure TfrmCadClientes.tbCancelarClick(Sender: TObject);
 begin
-  LimparCampos;
+  Modo(False);
+  if edtCadastroID.Enabled then
+  begin
+    edtCadastroID.SetFocus;
+  end;
 end;
 
 procedure TfrmCadClientes.tbExcluirClick(Sender: TObject);
@@ -99,7 +111,11 @@ begin
   if vCliente.Excluir(edtCadastroID.Text) then
   begin
     Atencao('Cliente excluído!');
-    LimparCampos;
+    Modo(False);
+    if edtCadastroID.Enabled then
+    begin
+      edtCadastroID.SetFocus;
+    end;
   end;
 end;
 
@@ -130,7 +146,11 @@ begin
     begin
       Atencao('Cliente editado com sucesso!');
     end;
-    LimparCampos;
+    Modo(False);
+    if edtCadastroID.Enabled then
+    begin
+      edtCadastroID.SetFocus;
+    end;
   end;
 end;
 
@@ -141,6 +161,7 @@ begin
     edtCadastroID.Text := vCliente.GetCADASTRO_ID;
     edtNome.Text       := vCliente.GetRAZAO_SOCIAL;
     vNovo              := False;
+    Modo(True);
   end;
 end;
 

@@ -81,8 +81,8 @@ type
     vCliente: TCliente;
     vProduto: TProdutoCad;
     procedure LimparCamposProduto;
-    procedure LimparTela;
     procedure PreencherTela;
+    procedure Modo(pEditando: Boolean);
     function RetornaStatus(pStatus: String): String;
   public
     { Public declarations }
@@ -158,6 +158,7 @@ begin
       if vCapa.Consultar(StrToInt(edtPedido.Text)) then
       begin
         PreencherTela;
+        Modo(True);
       end else
       begin
         Atencao('Pedido não cadastrado!');
@@ -169,6 +170,7 @@ begin
       edtData.Text := DateToStr(date);
       edtCadastroID.SetFocus;
       vNovo := True;
+      Modo(True);
     end;
   end;
 end;
@@ -190,6 +192,7 @@ begin
   vCliente  := TCliente.Create;
   vProduto  := TProdutoCad.Create;
   vEditando := False;
+  Modo(False);
 end;
 
 procedure TfrmPedidoVenda.FormDestroy(Sender: TObject);
@@ -221,21 +224,40 @@ begin
   edtTotal.Text := '0,00';
 end;
 
-procedure TfrmPedidoVenda.LimparTela;
+procedure TfrmPedidoVenda.Modo(pEditando: Boolean);
 begin
-  edtPedido.Clear;
-  edtData.Clear;
-  edtCadastroID.Clear;
-  edtCliente.Clear;
-  stStatus.Visible := False;
-  vNovo            := True;
-  vEditando        := False;
-  LimparCamposProduto;
-  cdsItens.EmptyDataSet;
-  if (vCapa <> nil) then begin
-    FreeAndNil(vCapa);
+  tbExcluir.Enabled      := pEditando and not vNovo;
+  tbCancelar.Enabled     := pEditando;
+  tbGravar.Enabled       := pEditando;
+  tbPesquisar.Enabled    := not pEditando;
+  edtPedido.Enabled      := not pEditando;
+  edtData.Enabled        := pEditando;
+  edtCadastroID.Enabled  := pEditando;
+  sbPesqClientes.Enabled := pEditando;
+  edtCliente.Enabled     := pEditando;
+  edtCodProduto.Enabled  := pEditando;
+  edtNomeProduto.Enabled := pEditando;
+  edtQuantidade.Enabled  := pEditando;
+  edtValor.Enabled       := pEditando;
+  edtTotal.Enabled       := pEditando;
+  dbgItens.Enabled       := pEditando;
+  edtVlrTotal.Enabled    := pEditando;
+  if not pEditando then
+  begin
+    edtPedido.Clear;
+    edtData.Clear;
+    edtCadastroID.Clear;
+    edtCliente.Clear;
+    stStatus.Visible := False;
+    vNovo            := True;
+    vEditando        := False;
+    LimparCamposProduto;
+    cdsItens.EmptyDataSet;
+    if (vCapa <> nil) then
+    begin
+      FreeAndNil(vCapa);
+    end;
   end;
-  edtPedido.SetFocus;
 end;
 
 procedure TfrmPedidoVenda.PreencherTela;
@@ -331,14 +353,22 @@ end;
 
 procedure TfrmPedidoVenda.tbCancelarClick(Sender: TObject);
 begin
-  LimparTela;
+  Modo(False);
+  if edtPedido.Enabled then
+  begin
+    edtPedido.SetFocus;
+  end;
 end;
 
 procedure TfrmPedidoVenda.tbExcluirClick(Sender: TObject);
 begin
   if vCapa.Excluir(StrToInt(edtPedido.Text)) then begin
     Atencao('Venda excluída com sucesso!');
-    LimparTela;
+    Modo(False);
+    if edtPedido.Enabled then
+    begin
+      edtPedido.SetFocus;
+    end;
   end;
 end;
 
@@ -423,7 +453,11 @@ begin
     end;
     Banco.FecharTransacao;
   end;
-  LimparTela;
+  Modo(False);
+  if edtPedido.Enabled then
+  begin
+    edtPedido.SetFocus;
+  end;
 end;
 
 procedure TfrmPedidoVenda.tbPesquisarClick(Sender: TObject);

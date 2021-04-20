@@ -48,11 +48,5 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
-  Application.CreateForm(TfrmPesquisa, frmPesquisa);
-  Application.CreateForm(TfrmCadClientes, frmCadClientes);
-  Application.CreateForm(TfrmCadProdutos, frmCadProdutos);
-  Application.CreateForm(TfrmPedidoVenda, frmPedidoVenda);
-  Application.CreateForm(TfrmReceita, frmReceita);
-  Application.CreateForm(TfrmReceituario, frmReceituario);
   Application.Run;
 end.

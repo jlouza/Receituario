@@ -443,7 +443,6 @@ object frmPedidoVenda: TfrmPedidoVenda
     ParentColor = False
     ParentFont = False
     TabOrder = 2
-    ExplicitTop = 217
   end
   object dbgItens: TDBGrid
     Left = 0

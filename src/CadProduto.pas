@@ -38,7 +38,7 @@ type
     { Private declarations }
     vProduto: TProdutoCad;
     vNovo: Boolean;
-    procedure LimparCampos;
+    procedure Modo(pEditando: Boolean);
   public
     { Public declarations }
   end;
@@ -63,6 +63,7 @@ begin
         edtValor.Text := FloatToStr(vProduto.GetVALOR);
         chkControleEspecial.Checked := (vProduto.GetCONTROLADO = 'S');
         vNovo := False;
+        Modo(True);
       end else begin
         Atencao('Produto não cadastrado!');
         edtCodigo.SetFocus;
@@ -71,6 +72,7 @@ begin
     end else
     begin
       vNovo := True;
+      Modo(True);
     end;
   end;
 end;
@@ -96,6 +98,7 @@ begin
   ToolBar1.Images := ilNavegadoresGlobal;
   vProduto := TProdutoCad.Create;
   vNovo    := True;
+  Modo(False);
 end;
 
 procedure TfrmCadProdutos.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -106,20 +109,30 @@ begin
   end;
 end;
 
-procedure TfrmCadProdutos.LimparCampos;
+procedure TfrmCadProdutos.Modo(pEditando: Boolean);
 begin
-  edtCodigo.Clear;
-  edtNome.Clear;
-  edtValor.Clear;
-  edtValor.Text := '0,00';
-  chkControleEspecial.Checked := False;
-  edtCodigo.SetFocus;
-  vNovo := False;
+  tbExcluir.Enabled   := pEditando and not vNovo;
+  tbCancelar.Enabled  := pEditando;
+  tbGravar.Enabled    := pEditando;
+  tbPesquisar.Enabled := not pEditando;
+  if not pEditando then
+  begin
+    edtCodigo.Clear;
+    edtNome.Clear;
+    edtValor.Clear;
+    edtValor.Text := '0,00';
+    chkControleEspecial.Checked := False;
+    vNovo := False;
+  end;
 end;
 
 procedure TfrmCadProdutos.tbCancelarClick(Sender: TObject);
 begin
-  LimparCampos;
+  Modo(False);
+  if edtCodigo.Enabled then
+  begin
+    edtCodigo.SetFocus;
+  end;
 end;
 
 procedure TfrmCadProdutos.tbExcluirClick(Sender: TObject);
@@ -127,7 +140,11 @@ begin
   if vProduto.Excluir(StrToInt(edtCodigo.Text)) then
   begin
     Atencao('Produto excluído!');
-    LimparCampos;
+    Modo(False);
+    if edtCodigo.Enabled then
+    begin
+      edtCodigo.SetFocus;
+    end;
   end;
 end;
 
@@ -163,7 +180,11 @@ begin
     begin
       Atencao('Produto '+IntToStr(vProduto.GetPRODUTO_ID)+' editado com sucesso!');
     end;
-    LimparCampos;
+    Modo(False);
+    if edtCodigo.Enabled then
+    begin
+      edtCodigo.SetFocus;
+    end;
   end;
 end;
 
@@ -176,6 +197,7 @@ begin
     edtValor.Text  := FloatToStr(vProduto.GetVALOR);
     chkControleEspecial.Checked := (vProduto.GetCONTROLADO = 'S');
     vNovo          := False;
+    Modo(True);
   end;
 end;
 
