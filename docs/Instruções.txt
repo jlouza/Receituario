@@ -1,0 +1,52 @@
+1 - Configurar o arquivo Configuracao.ini que está dentro da pasta: src\Win32\Debug;
+informar os campos: Server,User,Password e Database
+Server   - Servidor onde está armazenado o Banco de Dados;
+User     - SYSDBA (Usuário Padrão);
+Password - masterkey (Senha Padrão);
+DataBase - Caminho onde o Banco está localizado (BANCODADOS.FDB dentro da pasta data);
+
+2 - Dicionário de dados
+
+Tabela: CADASTROS
+CADASTRO_ID   - CPF do cliente;
+RAZAO_SOCIAL  - Nome do cliente;
+TIPO_PESSOA   - 'F-Física';
+TIPO_CADASTRO - 'C-Cliente';
+Obs: Foi criado essa estrutura já prevendo uma futura necessidade de se cadastrar um outro tipo de pessoa que não seja cliente;
+
+Tabela: TECNICO_AGRICOLA
+CPF  - CPF do técnico;
+NOME - Nome do técnico;
+NR_REGISTRO - Número do registro;
+
+Tabela: PRODUTOS
+PRODUTO_ID - Código do produto;
+NOME       - Nome do produto;
+VALOR      - Valor do produto;
+CONTROLADO - 'S-Sim','N-Não' Utiliza controle especial;
+
+Tabela: CAPA_PEDIDO
+PEDIDO_ID    - Número do pedido de venda;
+CADASTRO_ID  - CPF do cliente;
+RAZAO_SOCIAL - Nome do cliente;
+DATA         - Data do pedido de venda;
+TOTAL        - Total do pedido de venda;
+STATUS       - 'C-Concluído', 'A-Aguardando receita';
+
+Tabela: ITENS_PEDIDO
+PEDIDO_ID    - Número do pedido de venda;
+PRODUTO_ID   - Código do produto;
+NOME         - Nome do produto;
+QUANTIDADE   - Quantidade vendida do produto;
+VALOR        - Valor vendido do produto;
+VLR_TOTAL    - Valor total vendido do produto;
+RECEITA      - 'S-Sim','N-Não' Emitir receita para o produto;
+
+Tabela: RECEITAS
+PEDIDO_ID    - Número do pedido de venda;
+CADASTRO_ID  - CPF do cliente;
+RAZAO_SOCIAL - Nome do cliente;
+CPF_TECNICO  - CPF do técnico;
+TECNICO      - Nome do técnico;
+STATUS       - 'A-Assinado','P-Pendente';  
+ 

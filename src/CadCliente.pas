@@ -55,6 +55,10 @@ begin
       edtNome.Text := vCliente.GetRAZAO_SOCIAL;
       vNovo        := False;
       Modo(True);
+    end else
+    begin
+      vNovo := True;
+      Modo(True);
     end;
   end;
 end;

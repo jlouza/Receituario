@@ -114,7 +114,6 @@ begin
   begin
     if vCliente.Consultar(edtCadastroID.Text) then begin
       edtCliente.Text := vCliente.GetRAZAO_SOCIAL;
-      vNovo           := False;
     end else
     begin
       sbPesqClientes.Click;
@@ -168,9 +167,12 @@ begin
     end else
     begin
       edtData.Text := DateToStr(date);
-      edtCadastroID.SetFocus;
       vNovo := True;
       Modo(True);
+      if edtCadastroID.Enabled then
+      begin
+        edtCadastroID.SetFocus;
+      end;
     end;
   end;
 end;
@@ -228,26 +230,30 @@ procedure TfrmPedidoVenda.Modo(pEditando: Boolean);
 begin
   tbExcluir.Enabled      := pEditando and not vNovo;
   tbCancelar.Enabled     := pEditando;
-  tbGravar.Enabled       := pEditando;
+  tbGravar.Enabled       := pEditando and vNovo;
   tbPesquisar.Enabled    := not pEditando;
   edtPedido.Enabled      := not pEditando;
-  edtData.Enabled        := pEditando;
-  edtCadastroID.Enabled  := pEditando;
-  sbPesqClientes.Enabled := pEditando;
-  edtCliente.Enabled     := pEditando;
-  edtCodProduto.Enabled  := pEditando;
-  edtNomeProduto.Enabled := pEditando;
-  edtQuantidade.Enabled  := pEditando;
-  edtValor.Enabled       := pEditando;
-  edtTotal.Enabled       := pEditando;
-  dbgItens.Enabled       := pEditando;
-  edtVlrTotal.Enabled    := pEditando;
+  edtData.Enabled        := pEditando and vNovo;
+  edtCadastroID.Enabled  := pEditando and vNovo;
+  sbPesqClientes.Enabled := pEditando and vNovo;
+  edtCliente.Enabled     := pEditando and vNovo;
+  edtCodProduto.Enabled  := pEditando and vNovo;
+  sbPesqProdutos.Enabled := pEditando and vNovo;
+  edtNomeProduto.Enabled := pEditando and vNovo;
+  edtQuantidade.Enabled  := pEditando and vNovo;
+  edtValor.Enabled       := pEditando and vNovo;
+  edtTotal.Enabled       := pEditando and vNovo;
+  sbIncluir.Enabled      := pEditando and vNovo;
+  sbCancelar.Enabled     := pEditando and vNovo;
+  dbgItens.Enabled       := pEditando and vNovo;
+  edtVlrTotal.Enabled    := pEditando and vNovo;
   if not pEditando then
   begin
     edtPedido.Clear;
     edtData.Clear;
     edtCadastroID.Clear;
     edtCliente.Clear;
+    stStatus.Caption := '';
     stStatus.Visible := False;
     vNovo            := True;
     vEditando        := False;
@@ -469,6 +475,7 @@ begin
   if vCapa.Pesquisa then
   begin
     PreencherTela;
+    Modo(True);
   end;
 end;
 

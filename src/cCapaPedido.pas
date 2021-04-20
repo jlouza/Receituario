@@ -108,7 +108,9 @@ begin
   Result := False;
   try
     Result := Banco.Excluir('ITENS_PEDIDO',['PEDIDO_ID'],[pPedidoID]);
-    if Result then begin
+    if Result then
+    begin
+      Banco.Excluir('RECEITAS',['PEDIDO_ID'],[pPedidoID]);
       Banco.Excluir('CAPA_PEDIDO',['PEDIDO_ID'],[pPedidoID]);
     end;
   except

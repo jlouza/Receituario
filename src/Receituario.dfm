@@ -308,6 +308,7 @@ object frmReceituario: TfrmReceituario
     end
     object cdsItensQUANTIDADE: TFloatField
       FieldName = 'QUANTIDADE'
+      DisplayFormat = '#,##0.00'
     end
   end
 end
