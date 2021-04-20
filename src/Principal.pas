@@ -6,7 +6,9 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, FireDAC.UI.Intf, FireDAC.VCLUI.Wait, CadCliente, CadProduto,
   FireDAC.Stan.Intf, FireDAC.Comp.UI, FireDAC.Phys.FBDef, FireDAC.Phys, PedidoVenda, Receituario,
-  FireDAC.Phys.IBBase, FireDAC.Phys.FB, Vcl.Menus;
+  FireDAC.Phys.IBBase, FireDAC.Phys.FB, Vcl.Menus, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool,
+  FireDAC.Stan.Async, Data.DB, FireDAC.Comp.Client;
 
 type
   TfrmPrincipal = class(TForm)

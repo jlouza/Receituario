@@ -2,6 +2,8 @@ program ProjectReceituario;
 
 uses
   Vcl.Forms,
+  IniFiles,
+  System.SysUtils,
   Principal in 'Principal.pas' {frmPrincipal},
   Dados in 'Dados.pas',
   Biblioteca in 'Biblioteca.pas',
@@ -23,8 +25,26 @@ uses
 
 {$R *.res}
 
+var
+  vServer,
+  vDataBase,
+  vUserName,
+  vPassword: String;
+  vConfig  : TIniFile;
+
 begin
-  Banco := TDados.Create;
+  if FileExists(IncludeTrailingPathDelimiter(ExtractFilePath(Application.ExeName)) + 'Configuracao.ini') then
+  begin
+    vConfig   := TIniFile.Create(IncludeTrailingPathDelimiter(ExtractFilePath(Application.ExeName)) + 'Configuracao.ini');
+    vServer   := vConfig.ReadString('FIREBIRD','Server','');
+    vUserName := vConfig.ReadString('FIREBIRD','User','');
+    vPassword := vConfig.ReadString('FIREBIRD','Password','');
+    vDataBase := vConfig.ReadString('FIREBIRD','Database','');
+  end else begin
+    Atencao('Arquivo Configuracao.ini não localizado!');
+    Application.Terminate;
+  end;
+  Banco := TDados.Create(vServer,vDataBase,vUserName,vPassword);
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);

@@ -16,10 +16,10 @@ type
     qryPesquisa,
     qryPesquisaAux: TFDQuery;
 
-    procedure IniciarBanco;
+    procedure IniciarBanco(pServer,pDataBase,pUserName,pPassword: String);
   public
     { Public declarations }
-    constructor Create;
+    constructor Create(pServer,pDataBase,pUserName,pPassword:String);
     function Inserir(pTabela: String; pCampos: array of String; pValor: array of Variant):Boolean;
     function Atualizar(pTabela: String; pFiltros: array of String; pVlrFiltros: array of Variant; pCampos: array of String; pValor: array of Variant): Boolean;
     function Excluir(pTabela: String; pFiltros: array of String; pVlrFiltros: array of Variant):Boolean;
@@ -164,9 +164,9 @@ begin
   end;
 end;
 
-constructor TDados.Create;
+constructor TDados.Create(pServer,pDataBase,pUserName,pPassword:String);
 begin
-  IniciarBanco;
+  IniciarBanco(pServer,pDataBase,pUserName,pPassword);
 end;
 
 function TDados.Excluir(pTabela: String; pFiltros: array of String; pVlrFiltros: array of Variant): Boolean;
@@ -216,26 +216,28 @@ begin
   conexao.Commit;
 end;
 
-procedure TDados.IniciarBanco;
+procedure TDados.IniciarBanco(pServer,pDataBase,pUserName,pPassword: String);
 begin
   try
     conexao := TFDConnection.Create(nil);
-    conexao.Connected       := False;
-    conexao.DriverName      := 'FB';
-    conexao.Params.Database := 'C:\Projetos\data\BANCODADOS.FDB';
-    conexao.Params.UserName := 'SYSDBA';
-    conexao.Params.Password := 'masterkey';
-    conexao.LoginPrompt     := False;
-    conexao.Connected       := True;
-    qryExec     := TFDQuery.Create(nil);
-    qryExec.Connection     := conexao;
+    with conexao do
+    begin
+      Connected := False;
+      Params.Clear;
+      Params.Values['DriverID']  := 'FB';
+      Params.Values['Server']    := pServer;
+      Params.Values['Database']  := pDataBase;
+      Params.Values['User_name'] := pUserName;
+      Params.Values['Password']  := pPassword;
+      LoginPrompt := False;
+      Connected   := True;
+    end;
+    qryExec := TFDQuery.Create(nil);
+    qryExec.Connection := conexao;
     qryPesquisa := TFDQuery.Create(nil);
     qryPesquisa.Connection := conexao;
     qryPesquisaAux := TFDQuery.Create(nil);
     qryPesquisaAux.Connection := conexao;
-    {if conexao.Connected then begin
-      Application.MessageBox('Banco firibird iniciado com sucesso!','Atenção',MB_OK);
-    end;}
   except
     Application.MessageBox('Banco não iniciado!','Atenção',MB_OK);
   end;

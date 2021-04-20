@@ -100,42 +100,35 @@
         </DelphiCompile>
         <DCCReference Include="Principal.pas">
             <Form>frmPrincipal</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Dados.pas"/>
         <DCCReference Include="Biblioteca.pas"/>
         <DCCReference Include="Pesquisa.pas">
             <Form>frmPesquisa</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="cCadastro.pas"/>
         <DCCReference Include="cCliente.pas"/>
         <DCCReference Include="CadCliente.pas">
             <Form>frmCadClientes</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="cProduto.pas"/>
         <DCCReference Include="CadProduto.pas">
             <Form>frmCadProdutos</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="cItensPedido.pas"/>
         <DCCReference Include="cProdutoCad.pas"/>
         <DCCReference Include="cCapaPedido.pas"/>
         <DCCReference Include="PedidoVenda.pas">
             <Form>frmPedidoVenda</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="cReceita.pas"/>
         <DCCReference Include="Receita.pas">
             <Form>frmReceita</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="cTecnico.pas"/>
         <DCCReference Include="cReceituario.pas"/>
         <DCCReference Include="Receituario.pas">
             <Form>frmReceituario</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
