@@ -47,7 +47,8 @@ object frmPrincipal: TfrmPrincipal
     object miReceita: TMenuItem
       Caption = '&Receitas'
       object miPendente: TMenuItem
-        Caption = 'Pendente'
+        Caption = 'Pendentes'
+        OnClick = miPendenteClick
       end
     end
   end

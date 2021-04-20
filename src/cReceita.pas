@@ -1,6 +1,7 @@
 unit cReceita;
 
 interface
+
 uses
   Biblioteca, Data.DB, System.SysUtils, System.Generics.Collections, cItensPedido;
 
@@ -35,26 +36,26 @@ type
     procedure SetITENS(pValor: TItensPedido);
 
     function Gravar: Boolean;
-    function AssinarReceita: Boolean;
+    function AssinarReceita(pPedidoID: Integer): Boolean;
   end;
 
 implementation
 
 { TReceita }
 
-function TReceita.AssinarReceita: Boolean;
+function TReceita.AssinarReceita(pPedidoID: Integer): Boolean;
 begin
   Result := False;
   try
     Banco.Atualizar('RECEITAS',
                    ['PEDIDO_ID'],
-                   [GetPEDIDOID],
+                   [pPedidoID],
                    ['STATUS'],
                    ['A']);
 
     Banco.Atualizar('CAPA_PEDIDO',
                    ['PEDIDO_ID'],
-                   [GetPEDIDOID],
+                   [pPedidoID],
                    ['STATUS'],
                    ['C']);
     Result := True;

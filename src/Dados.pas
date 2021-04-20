@@ -13,7 +13,8 @@ type
     { Private declarations }
     conexao: TFDConnection;
     qryExec: TFDQuery;
-    qryPesquisa: TFDQuery;
+    qryPesquisa,
+    qryPesquisaAux: TFDQuery;
 
     procedure IniciarBanco;
   public
@@ -23,9 +24,11 @@ type
     function Atualizar(pTabela: String; pFiltros: array of String; pVlrFiltros: array of Variant; pCampos: array of String; pValor: array of Variant): Boolean;
     function Excluir(pTabela: String; pFiltros: array of String; pVlrFiltros: array of Variant):Boolean;
     function Campos: TFDQuery;
+    function CamposAux: TFDQuery;
     function Pesquisar(pTabela: String; pChave: String; pCampos: array of string; pTitulo: String): String;
     function NextVal(pTabela: String; pChave: String): Integer;
     procedure Consultar(pInstrucao: string; pCampos: array of String; pValor: array of Variant);
+    procedure ConsultarAux(pInstrucao: string; pCampos: array of String; pValor: array of Variant);
     procedure AbrirTransacao;
     procedure FecharTransacao;
     procedure VoltarTransacao;
@@ -106,6 +109,11 @@ begin
   Result := qryPesquisa;
 end;
 
+function TDados.CamposAux: TFDQuery;
+begin
+  Result := qryPesquisaAux;
+end;
+
 procedure TDados.Consultar(pInstrucao: string; pCampos: array of String; pValor: array of Variant);
 var
   I: Integer;
@@ -116,6 +124,31 @@ begin
   end;
   try
     with qryPesquisa do begin
+      Active := False;
+      SQL.Clear;
+      SQL.Add(pInstrucao);
+      Unprepare;
+      Prepare;
+      for I := Low(pCampos) to High(pCampos) do begin
+        ParamByName(pCampos[I]).Value := pValor[I];
+      end;
+      Active := True;
+    end;
+  except
+    Application.MessageBox('Erro ao consultar a tabela!','Atenção',MB_OK);
+  end;
+end;
+
+procedure TDados.ConsultarAux(pInstrucao: string; pCampos: array of String; pValor: array of Variant);
+var
+  I: Integer;
+begin
+  if High(pCampos) <> High(pValor) then begin
+    Application.MessageBox('Quantidade de parâmetos diferentes!','Atenção',MB_OK);
+    Abort;
+  end;
+  try
+    with qryPesquisaAux do begin
       Active := False;
       SQL.Clear;
       SQL.Add(pInstrucao);
@@ -198,6 +231,8 @@ begin
     qryExec.Connection     := conexao;
     qryPesquisa := TFDQuery.Create(nil);
     qryPesquisa.Connection := conexao;
+    qryPesquisaAux := TFDQuery.Create(nil);
+    qryPesquisaAux.Connection := conexao;
     {if conexao.Connected then begin
       Application.MessageBox('Banco firibird iniciado com sucesso!','Atenção',MB_OK);
     end;}

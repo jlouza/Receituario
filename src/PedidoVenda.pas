@@ -231,6 +231,9 @@ begin
   vEditando        := False;
   LimparCamposProduto;
   cdsItens.EmptyDataSet;
+  if (vCapa <> nil) then begin
+    FreeAndNil(vCapa);
+  end;
   edtPedido.SetFocus;
 end;
 
@@ -365,6 +368,7 @@ begin
     Abort;
   end;
   vCapa.SetNOVO(vNovo);
+  vCapa.SetDATA_PEDIDO(StrToDate(edtData.Text));
   vCapa.SetCADASTROID(edtCadastroID.Text);
   vCapa.SetRAZAO_SOCIAL(edtCliente.Text);
   vCapa.SetVLR_PEDIDO(StrToFloat(edtVlrTotal.Text));
@@ -406,7 +410,6 @@ begin
       begin
         Atencao('Solicitação de receita não cadastrada!');
         Banco.VoltarTransacao;
-        FreeAndNil(vReceita);
         Abort;
       end;
     end;
@@ -418,9 +421,8 @@ begin
       Atencao('Pedido '+IntToStr(vCapa.GetPEDIDOID)+' editado com sucesso!');
     end;
     Banco.FecharTransacao;
-    LimparTela;
   end;
-  FreeAndNil(vReceita);
+  LimparTela;
 end;
 
 procedure TfrmPedidoVenda.tbPesquisarClick(Sender: TObject);

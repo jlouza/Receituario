@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, FireDAC.UI.Intf, FireDAC.VCLUI.Wait, CadCliente, CadProduto,
-  FireDAC.Stan.Intf, FireDAC.Comp.UI, FireDAC.Phys.FBDef, FireDAC.Phys, PedidoVenda,
+  FireDAC.Stan.Intf, FireDAC.Comp.UI, FireDAC.Phys.FBDef, FireDAC.Phys, PedidoVenda, Receituario,
   FireDAC.Phys.IBBase, FireDAC.Phys.FB, Vcl.Menus;
 
 type
@@ -23,6 +23,7 @@ type
     procedure miClienteClick(Sender: TObject);
     procedure miProdutoClick(Sender: TObject);
     procedure miPedidoClick(Sender: TObject);
+    procedure miPendenteClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -46,6 +47,12 @@ procedure TfrmPrincipal.miPedidoClick(Sender: TObject);
 begin
   Application.CreateForm(TfrmPedidoVenda,frmPedidoVenda);
   frmPedidoVenda.ShowModal;
+end;
+
+procedure TfrmPrincipal.miPendenteClick(Sender: TObject);
+begin
+  Application.CreateForm(TfrmReceituario,frmReceituario);
+  frmReceituario.ShowModal;
 end;
 
 procedure TfrmPrincipal.miProdutoClick(Sender: TObject);
