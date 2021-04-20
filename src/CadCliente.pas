@@ -68,6 +68,7 @@ end;
 
 procedure TfrmCadClientes.FormCreate(Sender: TObject);
 begin
+  ToolBar1.Images := ilNavegadoresGlobal;
   vCliente := TCliente.Create;
   vNovo    := True;
 end;

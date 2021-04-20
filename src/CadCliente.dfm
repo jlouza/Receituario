@@ -3,7 +3,7 @@ object frmCadClientes: TfrmCadClientes
   Top = 0
   BorderIcons = [biSystemMenu]
   Caption = 'Cadastro de cliente'
-  ClientHeight = 83
+  ClientHeight = 104
   ClientWidth = 597
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -21,21 +21,21 @@ object frmCadClientes: TfrmCadClientes
   TextHeight = 13
   object lblCpf: TLabel
     Left = 8
-    Top = 34
+    Top = 49
     Width = 19
     Height = 13
     Caption = 'CPF'
   end
   object lblNome: TLabel
     Left = 139
-    Top = 34
+    Top = 49
     Width = 27
     Height = 13
     Caption = 'Nome'
   end
   object edtNome: TEdit
     Left = 139
-    Top = 50
+    Top = 65
     Width = 435
     Height = 21
     MaxLength = 50
@@ -43,7 +43,7 @@ object frmCadClientes: TfrmCadClientes
   end
   object edtCadastroID: TMaskEdit
     Left = 8
-    Top = 50
+    Top = 65
     Width = 127
     Height = 21
     AutoSize = False
@@ -57,19 +57,19 @@ object frmCadClientes: TfrmCadClientes
     Left = 0
     Top = 0
     Width = 597
-    Height = 29
+    Height = 40
     Bands = <
       item
         Control = ToolBar1
         ImageIndex = -1
-        MinHeight = 24
+        MinHeight = 35
         Width = 591
       end>
     object ToolBar1: TToolBar
       Left = 11
       Top = 0
       Width = 582
-      Height = 24
+      Height = 35
       Align = alClient
       AutoSize = True
       ButtonHeight = 21
@@ -87,7 +87,7 @@ object frmCadClientes: TfrmCadClientes
         Left = 0
         Top = 0
         Caption = '&Excluir'
-        ImageIndex = 2
+        ImageIndex = 0
         OnClick = tbExcluirClick
       end
       object tbCancelar: TToolButton
@@ -95,14 +95,14 @@ object frmCadClientes: TfrmCadClientes
         Top = 0
         Cursor = crHandPoint
         Caption = '&Cancelar'
-        ImageIndex = 0
+        ImageIndex = 1
         OnClick = tbCancelarClick
       end
       object tbGravar: TToolButton
         Left = 106
         Top = 0
         Caption = '&Gravar'
-        ImageIndex = 1
+        ImageIndex = 2
         OnClick = tbGravarClick
       end
       object ToolButton3: TToolButton
@@ -117,7 +117,7 @@ object frmCadClientes: TfrmCadClientes
         Left = 276
         Top = 0
         Caption = '&Pesquisar'
-        ImageIndex = 2
+        ImageIndex = 3
         OnClick = tbPesquisarClick
       end
       object ToolButton1: TToolButton
@@ -132,7 +132,7 @@ object frmCadClientes: TfrmCadClientes
         Left = 520
         Top = 0
         Caption = '&Fechar'
-        ImageIndex = 3
+        ImageIndex = 4
         OnClick = tbFecharClick
       end
     end

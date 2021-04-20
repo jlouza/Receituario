@@ -7,7 +7,7 @@ uses
 
 var
   Banco : TDados;
-
+  ilNavegadoresGlobal : TImageList;
 procedure Atencao(pMensagem: String);
 function  BooleanToChar(ck:TCheckBox):char;
 

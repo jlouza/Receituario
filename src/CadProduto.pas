@@ -93,6 +93,7 @@ end;
 
 procedure TfrmCadProdutos.FormCreate(Sender: TObject);
 begin
+  ToolBar1.Images := ilNavegadoresGlobal;
   vProduto := TProdutoCad.Create;
   vNovo    := True;
 end;

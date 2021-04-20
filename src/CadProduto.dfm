@@ -2,7 +2,7 @@ object frmCadProdutos: TfrmCadProdutos
   Left = 0
   Top = 0
   Caption = 'Cadastro de produto'
-  ClientHeight = 141
+  ClientHeight = 137
   ClientWidth = 591
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -20,21 +20,21 @@ object frmCadProdutos: TfrmCadProdutos
   TextHeight = 13
   object lblCodigo: TLabel
     Left = 24
-    Top = 39
+    Top = 44
     Width = 33
     Height = 13
     Caption = 'C'#243'digo'
   end
   object lblNome: TLabel
     Left = 122
-    Top = 39
+    Top = 44
     Width = 27
     Height = 13
     Caption = 'Nome'
   end
   object lblValor: TLabel
     Left = 24
-    Top = 88
+    Top = 93
     Width = 24
     Height = 13
     Caption = 'Valor'
@@ -43,19 +43,19 @@ object frmCadProdutos: TfrmCadProdutos
     Left = 0
     Top = 0
     Width = 591
-    Height = 29
+    Height = 40
     Bands = <
       item
         Control = ToolBar1
         ImageIndex = -1
-        MinHeight = 24
+        MinHeight = 35
         Width = 585
       end>
     object ToolBar1: TToolBar
       Left = 11
       Top = 0
       Width = 576
-      Height = 24
+      Height = 35
       Align = alClient
       AutoSize = True
       ButtonHeight = 21
@@ -73,7 +73,7 @@ object frmCadProdutos: TfrmCadProdutos
         Left = 0
         Top = 0
         Caption = '&Excluir'
-        ImageIndex = 2
+        ImageIndex = 0
         OnClick = tbExcluirClick
       end
       object tbCancelar: TToolButton
@@ -81,14 +81,14 @@ object frmCadProdutos: TfrmCadProdutos
         Top = 0
         Cursor = crHandPoint
         Caption = '&Cancelar'
-        ImageIndex = 0
+        ImageIndex = 1
         OnClick = tbCancelarClick
       end
       object tbGravar: TToolButton
         Left = 106
         Top = 0
         Caption = '&Gravar'
-        ImageIndex = 1
+        ImageIndex = 2
         OnClick = tbGravarClick
       end
       object ToolButton3: TToolButton
@@ -103,7 +103,7 @@ object frmCadProdutos: TfrmCadProdutos
         Left = 276
         Top = 0
         Caption = '&Pesquisar'
-        ImageIndex = 2
+        ImageIndex = 3
         OnClick = tbPesquisarClick
       end
       object ToolButton1: TToolButton
@@ -118,14 +118,14 @@ object frmCadProdutos: TfrmCadProdutos
         Left = 520
         Top = 0
         Caption = '&Fechar'
-        ImageIndex = 3
+        ImageIndex = 4
         OnClick = tbFecharClick
       end
     end
   end
   object edtCodigo: TEdit
     Left = 24
-    Top = 56
+    Top = 61
     Width = 81
     Height = 21
     NumbersOnly = True
@@ -134,14 +134,14 @@ object frmCadProdutos: TfrmCadProdutos
   end
   object edtNome: TEdit
     Left = 122
-    Top = 56
+    Top = 61
     Width = 411
     Height = 21
     TabOrder = 2
   end
   object edtValor: TEdit
     Left = 24
-    Top = 105
+    Top = 110
     Width = 99
     Height = 21
     Alignment = taRightJustify
@@ -152,7 +152,7 @@ object frmCadProdutos: TfrmCadProdutos
   end
   object chkControleEspecial: TCheckBox
     Left = 172
-    Top = 107
+    Top = 112
     Width = 131
     Height = 17
     Caption = 'Exige controle especial'

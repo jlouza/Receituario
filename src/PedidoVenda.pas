@@ -184,6 +184,7 @@ end;
 
 procedure TfrmPedidoVenda.FormCreate(Sender: TObject);
 begin
+  ToolBar1.Images := ilNavegadoresGlobal;
   vNovo     := True;
   vCapa     := TCapaPedido.Create;
   vCliente  := TCliente.Create;

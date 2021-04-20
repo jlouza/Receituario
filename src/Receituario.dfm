@@ -3,7 +3,7 @@ object frmReceituario: TfrmReceituario
   Top = 0
   BorderIcons = [biSystemMenu]
   Caption = 'Solicita'#231#245'es de receitas'
-  ClientHeight = 360
+  ClientHeight = 370
   ClientWidth = 717
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -14,6 +14,7 @@ object frmReceituario: TfrmReceituario
   KeyPreview = True
   OldCreateOrder = False
   Position = poMainFormCenter
+  OnCreate = FormCreate
   OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
@@ -21,21 +22,19 @@ object frmReceituario: TfrmReceituario
     Left = 0
     Top = 0
     Width = 717
-    Height = 29
+    Height = 40
     Bands = <
       item
         Control = ToolBar1
         ImageIndex = -1
-        MinHeight = 24
+        MinHeight = 35
         Width = 711
       end>
-    ExplicitLeft = -67
-    ExplicitWidth = 635
     object ToolBar1: TToolBar
       Left = 11
       Top = 0
       Width = 702
-      Height = 24
+      Height = 35
       Align = alClient
       AutoSize = True
       ButtonHeight = 21
@@ -53,7 +52,7 @@ object frmReceituario: TfrmReceituario
         Left = 0
         Top = 0
         Caption = '&Processar'
-        ImageIndex = 2
+        ImageIndex = 6
         OnClick = tbProcessarClick
       end
       object tbCancelar: TToolButton
@@ -61,7 +60,7 @@ object frmReceituario: TfrmReceituario
         Top = 0
         Cursor = crHandPoint
         Caption = '&Cancelar'
-        ImageIndex = 0
+        ImageIndex = 1
         OnClick = tbCancelarClick
       end
       object ToolButton3: TToolButton
@@ -76,7 +75,7 @@ object frmReceituario: TfrmReceituario
         Left = 321
         Top = 0
         Caption = '&Assinar'
-        ImageIndex = 1
+        ImageIndex = 5
         OnClick = tbAssinarClick
       end
       object ToolButton1: TToolButton
@@ -91,14 +90,14 @@ object frmReceituario: TfrmReceituario
         Left = 641
         Top = 0
         Caption = '&Fechar'
-        ImageIndex = 3
+        ImageIndex = 4
         OnClick = tbFecharClick
       end
     end
   end
   object txtReceitas: TStaticText
     Left = 0
-    Top = 29
+    Top = 40
     Width = 717
     Height = 21
     Align = alTop
@@ -115,13 +114,11 @@ object frmReceituario: TfrmReceituario
     ParentColor = False
     ParentFont = False
     TabOrder = 1
-    ExplicitLeft = -5
-    ExplicitTop = 217
-    ExplicitWidth = 635
+    ExplicitTop = 29
   end
   object dbgReceitas: TDBGrid
     Left = 0
-    Top = 50
+    Top = 61
     Width = 717
     Height = 119
     Align = alTop
@@ -166,7 +163,7 @@ object frmReceituario: TfrmReceituario
   end
   object txtItens: TStaticText
     Left = 0
-    Top = 169
+    Top = 180
     Width = 717
     Height = 21
     Align = alTop
@@ -183,13 +180,11 @@ object frmReceituario: TfrmReceituario
     ParentColor = False
     ParentFont = False
     TabOrder = 3
-    ExplicitLeft = -5
-    ExplicitTop = 217
-    ExplicitWidth = 635
+    ExplicitTop = 169
   end
   object dbgItens: TDBGrid
     Left = 0
-    Top = 190
+    Top = 201
     Width = 717
     Height = 167
     Align = alTop

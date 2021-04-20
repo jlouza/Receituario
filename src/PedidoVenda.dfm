@@ -2,7 +2,7 @@ object frmPedidoVenda: TfrmPedidoVenda
   Left = 0
   Top = 0
   Caption = 'Pedido de venda'
-  ClientHeight = 431
+  ClientHeight = 451
   ClientWidth = 635
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -20,7 +20,7 @@ object frmPedidoVenda: TfrmPedidoVenda
   TextHeight = 13
   object Label2: TLabel
     Left = 448
-    Top = 410
+    Top = 427
     Width = 59
     Height = 13
     Caption = 'Total pedido'
@@ -29,19 +29,19 @@ object frmPedidoVenda: TfrmPedidoVenda
     Left = 0
     Top = 0
     Width = 635
-    Height = 29
+    Height = 40
     Bands = <
       item
         Control = ToolBar1
         ImageIndex = -1
-        MinHeight = 24
+        MinHeight = 35
         Width = 629
       end>
     object ToolBar1: TToolBar
       Left = 11
       Top = 0
       Width = 620
-      Height = 24
+      Height = 35
       Align = alClient
       AutoSize = True
       ButtonHeight = 21
@@ -59,7 +59,7 @@ object frmPedidoVenda: TfrmPedidoVenda
         Left = 0
         Top = 0
         Caption = '&Excluir'
-        ImageIndex = 2
+        ImageIndex = 0
         OnClick = tbExcluirClick
       end
       object tbCancelar: TToolButton
@@ -67,14 +67,14 @@ object frmPedidoVenda: TfrmPedidoVenda
         Top = 0
         Cursor = crHandPoint
         Caption = '&Cancelar'
-        ImageIndex = 0
+        ImageIndex = 1
         OnClick = tbCancelarClick
       end
       object tbGravar: TToolButton
         Left = 106
         Top = 0
         Caption = '&Gravar'
-        ImageIndex = 1
+        ImageIndex = 2
         OnClick = tbGravarClick
       end
       object ToolButton3: TToolButton
@@ -89,7 +89,7 @@ object frmPedidoVenda: TfrmPedidoVenda
         Left = 276
         Top = 0
         Caption = '&Pesquisar'
-        ImageIndex = 2
+        ImageIndex = 3
         OnClick = tbPesquisarClick
       end
       object ToolButton1: TToolButton
@@ -104,77 +104,77 @@ object frmPedidoVenda: TfrmPedidoVenda
         Left = 561
         Top = 0
         Caption = '&Fechar'
-        ImageIndex = 3
+        ImageIndex = 4
         OnClick = tbFecharClick
       end
     end
   end
   object grpCapa: TGroupBox
     Left = 0
-    Top = 29
+    Top = 40
     Width = 635
-    Height = 188
+    Height = 193
     Align = alTop
     TabOrder = 1
     object lblPedido: TLabel
       Left = 16
-      Top = 5
+      Top = 6
       Width = 32
       Height = 13
       Caption = 'Pedido'
     end
     object lblNome: TLabel
       Left = 167
-      Top = 51
+      Top = 52
       Width = 27
       Height = 13
       Caption = 'Nome'
     end
     object lblCodigo: TLabel
       Left = 16
-      Top = 100
+      Top = 101
       Width = 33
       Height = 13
       Caption = 'C'#243'digo'
     end
     object lblDescricao: TLabel
       Left = 131
-      Top = 100
+      Top = 101
       Width = 46
       Height = 13
       Caption = 'Descri'#231#227'o'
     end
     object lblQuantidade: TLabel
       Left = 16
-      Top = 143
+      Top = 144
       Width = 56
       Height = 13
       Caption = 'Quantidade'
     end
     object lblValor: TLabel
       Left = 120
-      Top = 143
+      Top = 144
       Width = 24
       Height = 13
       Caption = 'Valor'
     end
     object lblTotal: TLabel
       Left = 222
-      Top = 143
+      Top = 144
       Width = 24
       Height = 13
       Caption = 'Total'
     end
     object lblCpf: TLabel
       Left = 16
-      Top = 51
+      Top = 52
       Width = 19
       Height = 13
       Caption = 'CPF'
     end
     object sbPesqClientes: TSpeedButton
       Left = 143
-      Top = 66
+      Top = 67
       Width = 23
       Height = 22
       Glyph.Data = {
@@ -195,14 +195,14 @@ object frmPedidoVenda: TfrmPedidoVenda
     end
     object Label1: TLabel
       Left = 240
-      Top = 5
+      Top = 6
       Width = 23
       Height = 13
       Caption = 'Data'
     end
     object sbIncluir: TSpeedButton
       Left = 317
-      Top = 159
+      Top = 160
       Width = 23
       Height = 22
       Glyph.Data = {
@@ -244,7 +244,7 @@ object frmPedidoVenda: TfrmPedidoVenda
     end
     object sbCancelar: TSpeedButton
       Left = 341
-      Top = 159
+      Top = 160
       Width = 23
       Height = 22
       Glyph.Data = {
@@ -286,7 +286,7 @@ object frmPedidoVenda: TfrmPedidoVenda
     end
     object sbPesqProdutos: TSpeedButton
       Left = 108
-      Top = 116
+      Top = 117
       Width = 23
       Height = 22
       Glyph.Data = {
@@ -307,7 +307,7 @@ object frmPedidoVenda: TfrmPedidoVenda
     end
     object stStatus: TLabel
       Left = 455
-      Top = 19
+      Top = 20
       Width = 52
       Height = 19
       Caption = 'Status'
@@ -321,7 +321,7 @@ object frmPedidoVenda: TfrmPedidoVenda
     end
     object edtPedido: TEdit
       Left = 16
-      Top = 22
+      Top = 23
       Width = 91
       Height = 21
       Alignment = taRightJustify
@@ -332,7 +332,7 @@ object frmPedidoVenda: TfrmPedidoVenda
     end
     object edtCliente: TEdit
       Left = 167
-      Top = 67
+      Top = 68
       Width = 450
       Height = 21
       TabStop = False
@@ -343,7 +343,7 @@ object frmPedidoVenda: TfrmPedidoVenda
     end
     object edtCodProduto: TEdit
       Left = 16
-      Top = 117
+      Top = 118
       Width = 91
       Height = 21
       Alignment = taRightJustify
@@ -354,7 +354,7 @@ object frmPedidoVenda: TfrmPedidoVenda
     end
     object edtNomeProduto: TEdit
       Left = 131
-      Top = 117
+      Top = 118
       Width = 486
       Height = 21
       TabStop = False
@@ -365,7 +365,7 @@ object frmPedidoVenda: TfrmPedidoVenda
     end
     object edtQuantidade: TEdit
       Left = 16
-      Top = 160
+      Top = 161
       Width = 91
       Height = 21
       Alignment = taRightJustify
@@ -375,7 +375,7 @@ object frmPedidoVenda: TfrmPedidoVenda
     end
     object edtValor: TEdit
       Left = 120
-      Top = 160
+      Top = 161
       Width = 91
       Height = 21
       Alignment = taRightJustify
@@ -387,7 +387,7 @@ object frmPedidoVenda: TfrmPedidoVenda
     end
     object edtTotal: TEdit
       Left = 222
-      Top = 160
+      Top = 161
       Width = 91
       Height = 21
       TabStop = False
@@ -400,7 +400,7 @@ object frmPedidoVenda: TfrmPedidoVenda
     end
     object edtCadastroID: TMaskEdit
       Left = 16
-      Top = 67
+      Top = 68
       Width = 127
       Height = 21
       AutoSize = False
@@ -413,7 +413,7 @@ object frmPedidoVenda: TfrmPedidoVenda
     object edtData: TMaskEdit
       Tag = 1
       Left = 240
-      Top = 22
+      Top = 23
       Width = 89
       Height = 21
       TabStop = False
@@ -426,7 +426,7 @@ object frmPedidoVenda: TfrmPedidoVenda
   end
   object txtItens: TStaticText
     Left = 0
-    Top = 217
+    Top = 233
     Width = 635
     Height = 21
     Align = alTop
@@ -443,10 +443,11 @@ object frmPedidoVenda: TfrmPedidoVenda
     ParentColor = False
     ParentFont = False
     TabOrder = 2
+    ExplicitTop = 217
   end
   object dbgItens: TDBGrid
     Left = 0
-    Top = 238
+    Top = 254
     Width = 635
     Height = 163
     Align = alTop
@@ -502,7 +503,7 @@ object frmPedidoVenda: TfrmPedidoVenda
   end
   object edtVlrTotal: TDBEdit
     Left = 513
-    Top = 407
+    Top = 424
     Width = 104
     Height = 21
     TabStop = False

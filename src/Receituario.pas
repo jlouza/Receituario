@@ -41,6 +41,7 @@ type
     procedure tbProcessarClick(Sender: TObject);
     procedure tbFecharClick(Sender: TObject);
     procedure tbAssinarClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
     vListaReceitas: TReceituario;
@@ -63,6 +64,11 @@ end;
 procedure TfrmReceituario.cdsReceitasBeforeDelete(DataSet: TDataSet);
 begin
   Abort;
+end;
+
+procedure TfrmReceituario.FormCreate(Sender: TObject);
+begin
+  ToolBar1.Images := ilNavegadoresGlobal;
 end;
 
 procedure TfrmReceituario.FormDestroy(Sender: TObject);
