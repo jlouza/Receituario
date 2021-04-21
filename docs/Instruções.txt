@@ -1,3 +1,6 @@
+IDE: Delphi Community
+BANCO DE DADOS: FIREBIRD 2.5
+
 1 - Configurar o arquivo Configuracao.ini que está dentro da pasta: src\Win32\Debug;
 informar os campos: Server,User,Password e Database
 Server   - Servidor onde está armazenado o Banco de Dados;
